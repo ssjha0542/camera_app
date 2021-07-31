@@ -5,17 +5,35 @@ body{
     margin:0;
 }
 #record-video,#capture-btn{
-  position: fixed;
+  border: none;
+  outline: none;
   z-index: 10;
-  right:6rem;
-  top:35vh;
+  top:1rem;
   border-radius: 50%;
-  border:none;
-  height: 4rem;
-  width: 4rem;
+  height: 4.5rem;
+  width:  4.5rem;
 }
 #capture-btn{
     top:55vh;
+}
+#record-video{
+    background-color: red;
+}
+.btn-parent{
+    height:7rem;
+    width: 7rem;
+    border: 0.5rem solid white;
+    position: fixed;
+    top:30vh;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right:3vw;
+}
+.capture-container{
+    top:50vh;
 }
 .video_container{
     height:100vh;
@@ -26,4 +44,22 @@ body{
 video{
     height: 100%;
     width:100%;
+}
+/********animations*********/
+.record-animation{
+   animation:scaleUp 1s ease-in infinite;
+}
+@keyframes scaleUp{
+    0%{
+        transform: scale(1);
+    }
+    25%{
+        transform: scale(1.125);
+    }
+    50%{
+        transform: scale(1.16);
+    }
+    75%{
+        transform: scale(1.125);
+    }
 }
