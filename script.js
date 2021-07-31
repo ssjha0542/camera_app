@@ -42,6 +42,7 @@ navigator.mediaDevices.getUserMedia(contraints).then(function(mediaStream){
     console.log(err);
 })
 captureBtn.addEventListener("click",function(){
+    captureBtn.classList.add("capture-animation");
     //creating  a canvas equal to the video height and with
     let canvas=document.createElement("canvas");
     canvas.width=videoPlayer.videoWidth;
@@ -57,4 +58,7 @@ captureBtn.addEventListener("click",function(){
     anchor.download="file.png";
     anchor.click();
     anchor.remove();
+    setTimeOut(function(){
+        captureBtn.classList.remove("capture-animation");
+    },1000);
 })
