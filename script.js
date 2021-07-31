@@ -4,6 +4,7 @@ let recordState=false;
 let contraints={video:true,audio:true};
 let mediaRecorder;
 let chunks=[];
+let captureBtn=document.querySelector("#capture-btn");
 videoRecorderBtn.addEventListener("click",function(){
     if(mediaRecorder!=undefined){
         if(recordState==false){
@@ -38,4 +39,17 @@ navigator.mediaDevices.getUserMedia(contraints).then(function(mediaStream){
     }
 }).catch(function(err){
     console.log(err);
+})
+captureBtn.addEventListener("click",function(){
+    let canvas=document.createElement("canvas");
+    canvas.width=videoPlayer.videoWidth;
+    canvas.height=videoPlayer.videoHeight;
+    let tool=canvas.getContext("2d");
+    //drawing image on that canvas
+    tool.drawImage(videoPlayer,0,0);
+    let link=canvas.toDataURL();
+    let anchor=document.createElement("a");
+    anchor.href=link;
+    anchor.download="file.png";
+    anchor.click();
 })
