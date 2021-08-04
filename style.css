@@ -3,6 +3,7 @@
 }
 body{
     margin:0;
+    overflow: hidden;
 }
 #record-video,#capture-btn{
   border: none;
@@ -106,4 +107,25 @@ height: 20%;
 }
 .ui-filter-active{
     display: block;
+}
+.zoom{
+    height: 7rem;
+    width: 3rem;
+    background-color: #444;
+    position: fixed;
+    z-index: 6;
+    right: 7vw;
+    top: 9vh;
+
+}
+.icon-container{
+    color: white;
+    height: 50%;
+    border-bottom: 2px solid black;
+    text-align: center;
+    padding-top: 1rem;
+    
+}
+.icon{
+    font-size: 180%;
 }
