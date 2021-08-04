@@ -6,6 +6,9 @@ let mediaRecorder;
 let chunks=[];
 let captureBtn=document.querySelector("#capture-btn");
 let clearObj;
+let filterColor = "";
+let uiFilter = document.querySelector(".ui-filter");
+let allFilters = document.querySelectorAll(".filter");
 let timingELem = document.querySelector("#timing");
 videoRecorderBtn.addEventListener("click",function(){
     if(mediaRecorder!=undefined){
@@ -55,6 +58,11 @@ captureBtn.addEventListener("click",function(){
     let tool=canvas.getContext("2d");
     //drawing image on that canvas
     tool.drawImage(videoPlayer,0,0);
+    if (filterColor) {
+        tool.fillStyle = filterColor;
+        tool.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
     //to convert canvas to url use .toDataURL
     let link=canvas.toDataURL();
     //download 
@@ -82,4 +90,21 @@ function stopCounting() {
     timingELem.classList.remove("timing-active");
     timingELem.innerText = "00: 00: 00";
     clearInterval(clearObj);
+}
+// filter apply
+for (let i = 0; i < allFilters.length; i++) {
+    allFilters[i].addEventListener("click", function () {
+        // add filter to ui
+        let color = allFilters[i].style.backgroundColor
+        if (color) {
+            uiFilter.classList.add("ui-filter-active");
+            uiFilter.style.backgroundColor = color;
+            filterColor = color;
+        } else {
+            uiFilter.classList.remove("ui-filter-active");
+            uiFilter.style.backgroundColor = "";
+            filterColor = "";
+
+        }
+    })
 }

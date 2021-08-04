@@ -95,3 +95,15 @@ height: 20%;
 .timing-active{
     display: block;
 }
+.ui-filter{
+    height:100vh;
+    width:100vw;
+    position: fixed;
+    z-index:4;
+    display: none;
+    
+
+}
+.ui-filter-active{
+    display: block;
+}
