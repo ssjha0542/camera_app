@@ -40,13 +40,14 @@ navigator.mediaDevices.getUserMedia(contraints).then(function(mediaStream){
     }
     mediaRecorder.onstop=function(){
         let blob=new Blob(chunks,{type:'video.mp4'});
-        chunks=[];
-        let blobUrl=URL.createObjectURL(blob);
-        let link=document.createElement('a');
-        link.href=blobUrl;
-        link.download='video.mp4';
-        link.click();
-        link.remove();
+        //chunks=[];
+        // let blobUrl=URL.createObjectURL(blob);
+        addMediaToGallery(blob,'video');
+        // let link=document.createElement('a');
+        // link.href=blobUrl;
+        // link.download='video.mp4';
+        // link.click();
+        // link.remove();
     }
 }).catch(function(err){
     console.log(err);
@@ -70,12 +71,13 @@ captureBtn.addEventListener("click",function(){
 
     //to convert canvas to url use .toDataURL
     let link=canvas.toDataURL();
+    addMediaToGallery(link,'img');
     //download 
-    let anchor=document.createElement("a");
-    anchor.href=link;
-    anchor.download="file.png";
-    anchor.click();
-    anchor.remove();
+    // let anchor=document.createElement("a");
+    // anchor.href=link;
+    // anchor.download="file.png";
+    // anchor.click();
+    // anchor.remove();
     setTimeout(function(){
         captureBtn.classList.remove("capture-animation");
     },1000);
